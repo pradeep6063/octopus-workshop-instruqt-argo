@@ -31,6 +31,7 @@ step "flyway-database-migrations" {
             Flyway.Command.Target = "latest"
             Flyway.Command.Value = "migrate"
             Flyway.Package.Value = "parameter.database.package"
+            Flyway.Target.Url = "jdbc:sqlserver://host:port;databaseName=database"
             Octopus.Action.EnabledFeatures = "Octopus.Features.SelectPowerShellEditionForWindows"
             Octopus.Action.PowerShell.Edition = "Core"
             Octopus.Action.RunOnServer = "true"
@@ -1160,6 +1161,8 @@ step "flyway-database-migrations" {
 
         packages "Flyway.Package.Value" {
             acquisition_location = "Server"
+            feed = "octopus-server-built-in"
+            package_id = ""
             properties = {
                 Extract = "True"
                 PackageParameterName = "Flyway.Package.Value"
