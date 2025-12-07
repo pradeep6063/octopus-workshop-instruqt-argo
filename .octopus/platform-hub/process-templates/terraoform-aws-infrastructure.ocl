@@ -109,5 +109,10 @@ step "print-terraform-outputs" {
             OctopusUseBundledTooling = "False"
         }
         worker_pool_variable = "#{parameter.worker.pool}"
+
+        container {
+            feed = "#{parameter.container.feed}"
+            image = "octopusdeploylabs/terraform-workertools:1.14.1"
+        }
     }
 }
